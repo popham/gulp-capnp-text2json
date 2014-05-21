@@ -1,10 +1,11 @@
 var fs = require('fs');
+var path = require('path');
 
 var gutil = require('gulp-util');
 var through = require('through2');
 
 var PEG = require("pegjs");
-var parser = PEG.buildParser(fs.readFileSync('./grammar.peg', 'utf8'));
+var parser = PEG.buildParser(fs.readFileSync(path.join(__dirname, './grammar.peg'), 'utf8'));
 
 module.exports = function () {
     return through.obj(function (file, enc, cb) {
@@ -19,7 +20,8 @@ module.exports = function () {
         }
 
         try {
-            file.contents = parser.parse(file.contents);
+            var image = parser.parse(file.contents.toString());
+            file.contents = new Buffer(JSON.stringify(image));
             this.push(file);
             cb();
         } catch (err) {
