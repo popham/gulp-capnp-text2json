@@ -1,6 +1,6 @@
 {
   "name": "gulp-capnp-text2json",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Convert Capnproto's text dump format to JSON.",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "keywords": [
     "gulp",
     "capnproto",
-    "gulp-plugin"
+    "gulpplugin"
   ],
   "author": "Tim Popham",
   "license": "MIT",
