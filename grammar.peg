@@ -63,6 +63,10 @@ array
     { return values !== null ? values : []; }
 
 number "number"
+  = minus? int { return text(); }
+  / losslessNumber
+
+losslessNumber "lossless number"
   = minus? int frac? exp? { return parseFloat(text()); }
 
 decimal_point = "."
